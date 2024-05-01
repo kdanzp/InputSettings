@@ -11,6 +11,7 @@ using ZennoLab.CommandCenter;
 using ZennoLab.Emulation;
 using ZennoLab.InterfacesLibrary.ProjectModel;
 using ZennoLab.InterfacesLibrary.ProjectModel.Enums;
+using ZennoLab.Macros;
 
 namespace InputSettings
 {
@@ -27,9 +28,13 @@ namespace InputSettings
         /// <returns>Код выполнения скрипта</returns>		
         public int Execute(Instance instance, IZennoPosterProjectModel project)
         {
-            int executionResult = 0;
+            var item = project.Variables["int"].ToInt();
+            var arr = project.Variables["array"].MultiSelectToArray();
+            var arr2 = project.Variables["array2"].MultiSelectToArray();
+            var spintax = project.Variables["spintax"].Spintax();
+            
 
-            return executionResult;
+            return 0;
         }
     }
 }
