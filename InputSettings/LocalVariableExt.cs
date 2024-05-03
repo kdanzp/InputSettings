@@ -12,6 +12,17 @@ namespace InputSettings
         private static readonly Random _random = new Random();
 
         /// <summary>
+        /// Преобразует значение string в целочисленное значение (int).
+        /// Выбрасывает FormatException, если преобразование не удалось.
+        /// </summary>
+        /// <returns>Целочисленное значение (int).</returns>
+        public static int ToInt(this string value)
+        {
+            return int.TryParse(value, out int result) ? result :
+                throw new FormatException($"Значение переменной \"{value}\" не может быть преобразовано в тип данных Int.");
+        }
+
+        /// <summary>
         /// Преобразует значение локальной переменной в логическое значение (bool).
         /// Выбрасывает FormatException, если преобразование не удалось.
         /// </summary>
