@@ -23,6 +23,17 @@ namespace InputSettings
         }
 
         /// <summary>
+        /// Преобразует значение локальной переменной в целочисленное значение (int).
+        /// Выбрасывает FormatException, если преобразование не удалось.
+        /// </summary>
+        /// <returns>Целочисленное значение преобразованной переменной (int).</returns>
+        public static int ToInt(this ILocalVariable variable)
+        {
+            return int.TryParse(variable.Value, out int result) ? result :
+                throw new FormatException($"Значение переменной \"{variable.Name}\" не может быть преобразовано в тип данных Int.");
+        }
+
+        /// <summary>
         /// Преобразует значение локальной переменной в логическое значение (bool).
         /// Выбрасывает FormatException, если преобразование не удалось.
         /// </summary>
@@ -34,17 +45,6 @@ namespace InputSettings
                 throw new FormatException($"Значение переменной \"{variable.Name}\" не может быть преобразовано в тип данных Bool.");
             }
             return result;
-        }
-
-        /// <summary>
-        /// Преобразует значение локальной переменной в целочисленное значение (int).
-        /// Выбрасывает FormatException, если преобразование не удалось.
-        /// </summary>
-        /// <returns>Целочисленное значение преобразованной переменной (int).</returns>
-        public static int ToInt(this ILocalVariable variable)
-        {
-            return int.TryParse(variable.Value, out int result) ? result : 
-                throw new FormatException($"Значение переменной \"{variable.Name}\" не может быть преобразовано в тип данных Int.");
         }
 
         /// <summary>
